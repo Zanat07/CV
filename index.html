@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CV – Juan Sebastian Tinjaca Mesa</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0B1120;
+    --panel:  #111827;
+    --card:   #1a2235;
+    --border: #243049;
+    --aws:    #FF9900;
+    --aws-dim:#c97700;
+    --teal:   #00D4C8;
+    --white:  #F0F4FF;
+    --muted:  #8A97B0;
+    --body:   #C5CEDF;
+    --purple: #a78bfa;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  @media print {
+    body { background: white !important; }
+    .cv-wrap { max-width: 100% !important; box-shadow: none !important; }
+    .floating-shapes, .particles { display: none !important; }
+  }
+
+  body {
+    background: var(--navy);
+    font-family: var(--font-body);
+    color: var(--body);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow-x: hidden;
+  }
+
+  /* ── FLOATING BACKGROUND SHAPES ─────────── */
+  .floating-shapes {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .floating-shapes .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.03;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .floating-shapes .shape:nth-child(1) {
+    width: 400px; height: 400px;
+    background: var(--aws);
+    top: -100px; left: -100px;
+    animation-delay: 0s;
+  }
+  .floating-shapes .shape:nth-child(2) {
+    width: 300px; height: 300px;
+    background: var(--teal);
+    top: 50%; right: -80px;
+    animation-delay: -5s;
+  }
+  .floating-shapes .shape:nth-child(3) {
+    width: 250px; height: 250px;
+    background: var(--purple);
+    bottom: -50px; left: 30%;
+    animation-delay: -10s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -30px) scale(1.05); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(10px, -10px) scale(1.02); }
+  }
+
+  /* ── MAIN WRAPPER ───────────────────────── */
+  .cv-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 100px rgba(0,0,0,.6),
+      0 0 0 1px rgba(255,153,0,.05),
+      inset 0 1px 0 rgba(255,255,255,.03);
+    animation: fadeUp .8s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(40px) scale(0.98); }
+    to   { opacity:1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #0e1826 0%, #12263f 50%, #0e1d33 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 3.5rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(255,153,0,.12) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(0,212,200,.07) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite 2s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
+  /* ── PROFILE PHOTO ──────────────────────── */
+  .profile-photo {
+    position: relative;
+    z-index: 2;
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    animation: photoReveal 1s cubic-bezier(.16,1,.3,1) .3s both;
+  }
+
+  @keyframes photoReveal {
+    from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  .profile-photo::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--aws), var(--teal), var(--purple), var(--aws));
+    animation: spin 6s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .profile-photo::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent, rgba(255,153,0,.2), transparent, rgba(0,212,200,.2), transparent);
+    animation: spin 8s linear infinite reverse;
+    z-index: -2;
+    opacity: 0.6;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--panel);
+    display: block;
+  }
+
+  .name-block {
+    position: relative;
+    z-index: 1;
+    animation: slideRight .8s cubic-bezier(.16,1,.3,1) .2s both;
+  }
+
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .tag-line {
+    font-family: var(--font-head);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--aws);
+    margin-bottom: .6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .tag-line::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--aws);
+    border-radius: 2px;
+    animation: expandLine 1s ease .5s both;
+  }
+
+  @keyframes expandLine {
+    from { width: 0; }
+    to { width: 20px; }
+  }
+
+  h1 {
+    font-family: var(--font-head);
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: .9rem;
+  }
+
+  h1 span {
+    color: var(--aws);
+    background: linear-gradient(135deg, var(--aws), #ffba4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: .82rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .contact-box {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    align-items: flex-end;
+    animation: slideLeft .8s cubic-bezier(.16,1,.3,1) .4s both;
+  }
+
+  @keyframes slideLeft {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s, transform .2s;
+  }
+  .contact-item:hover { color: var(--teal); transform: translateX(-3px); }
+  .contact-item .ico {
+    width: 24px; height: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s, transform .2s;
+  }
+  .contact-item:hover .ico {
+    background: rgba(255,153,0,.1);
+    border-color: rgba(255,153,0,.3);
+    transform: scale(1.1);
+  }
+  .contact-item .ico svg { width:12px; height:12px; fill: var(--aws); }
+
+  /* ── BADGES ROW ─────────────────────────── */
+  .badges {
+    padding: 1.2rem 3.5rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+    align-items: center;
+    animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .5s both;
+  }
+
+  .badge {
+    font-family: var(--font-head);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .35rem .85rem;
+    border-radius: 20px;
+    transition: transform .2s, box-shadow .2s;
+    cursor: default;
+  }
+
+  .badge:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  .badge-aws {
+    background: rgba(255,153,0,.15);
+    color: var(--aws);
+    border: 1px solid rgba(255,153,0,.3);
+  }
+  .badge-aws:hover { box-shadow: 0 4px 15px rgba(255,153,0,.2); }
+
+  .badge-teal {
+    background: rgba(0,212,200,.12);
+    color: var(--teal);
+    border: 1px solid rgba(0,212,200,.25);
+  }
+  .badge-teal:hover { box-shadow: 0 4px 15px rgba(0,212,200,.2); }
+
+  .badge-blue {
+    background: rgba(100,160,255,.12);
+    color: #7eb8ff;
+    border: 1px solid rgba(100,160,255,.25);
+  }
+  .badge-blue:hover { box-shadow: 0 4px 15px rgba(100,160,255,.2); }
+
+  .badge-purple {
+    background: rgba(167,139,250,.12);
+    color: var(--purple);
+    border: 1px solid rgba(167,139,250,.25);
+  }
+  .badge-purple:hover { box-shadow: 0 4px 15px rgba(167,139,250,.2); }
+
+  /* ── BODY GRID ──────────────────────────── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* ── SIDEBAR ────────────────────────────── */
+  .sidebar {
+    background: #0e1824;
+    border-right: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+  }
+
+  /* ── MAIN ───────────────────────────────── */
+  .main {
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  /* ── SECTION TITLES ─────────────────────── */
+  .sec-title {
+    font-family: var(--font-head);
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--aws);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+  }
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── SCROLL REVEAL ANIMATION ────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SKILLS ─────────────────────────────── */
+  .skill-group {
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeIn .5s ease forwards;
+  }
+  .skill-group:nth-child(2) { animation-delay: .1s; }
+  .skill-group:nth-child(3) { animation-delay: .2s; }
+  .skill-group:nth-child(4) { animation-delay: .3s; }
+  .skill-group:nth-child(5) { animation-delay: .4s; }
+  .skill-group:nth-child(6) { animation-delay: .5s; }
+  .skill-group:nth-child(7) { animation-delay: .6s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .skill-label {
+    font-size: .72rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: .45rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .skill-label .percent {
+    font-size: .62rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .skill-bar {
+    height: 5px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+    position: relative;
+  }
+  .skill-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--aws), var(--teal));
+    animation: grow 1.2s cubic-bezier(.16,1,.3,1) both;
+    transform-origin: left;
+    position: relative;
+  }
+  .skill-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px rgba(0,212,200,.6);
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0,212,200,.4); }
+    50% { box-shadow: 0 0 15px rgba(0,212,200,.8); }
+  }
+
+  /* ── CERTS ──────────────────────────────── */
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    margin-bottom: .9rem;
+    padding: .7rem .85rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    cursor: default;
+  }
+  .cert-item:hover {
+    border-color: rgba(255,153,0,.4);
+    transform: translateX(4px) scale(1.01);
+    box-shadow: 0 4px 20px rgba(255,153,0,.1);
+  }
+  .cert-dot {
+    width: 8px; height: 8px;
+    background: var(--aws);
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255,153,0,.6);
+    animation: certPulse 3s ease-in-out infinite;
+  }
+  .cert-item:nth-child(2) .cert-dot { animation-delay: .5s; }
+  .cert-item:nth-child(3) .cert-dot { animation-delay: 1s; }
+  .cert-item:nth-child(4) .cert-dot { animation-delay: 1.5s; }
+  .cert-item:nth-child(5) .cert-dot { animation-delay: 2s; }
+
+  @keyframes certPulse {
+    0%, 100% { box-shadow: 0 0 5px rgba(255,153,0,.4); transform: scale(1); }
+    50% { box-shadow: 0 0 12px rgba(255,153,0,.8); transform: scale(1.3); }
+  }
+
+  .cert-text { font-size: .73rem; color: var(--body); line-height: 1.4; }
+
+  /* ── LANGUAGES ──────────────────────────── */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .55rem .8rem;
+    margin-bottom: .5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color .2s, transform .2s;
+  }
+  .lang-item:hover {
+    border-color: rgba(0,212,200,.3);
+    transform: translateX(3px);
+  }
+  .lang-name {
+    font-size: .73rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .lang-level {
+    font-size: .65rem;
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* ── SOFT SKILLS ────────────────────────── */
+  .soft-skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+  .soft-skill-item {
+    font-size: .68rem;
+    color: var(--body);
+    padding: .4rem .7rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: transform .2s, border-color .2s, background .2s;
+    cursor: default;
+  }
+  .soft-skill-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(167,139,250,.3);
+    background: rgba(167,139,250,.08);
+  }
+
+  /* ── EDUCATION sidebar ──────────────────── */
+  .edu-item {
+    margin-bottom: 1.1rem;
+    padding: .8rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    border-left: 3px solid var(--aws);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .edu-item:hover {
+    transform: translateX(3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+  }
+  .edu-school {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: .8rem;
+    color: var(--white);
+    margin-bottom: .18rem;
+  }
+  .edu-degree { font-size: .72rem; color: var(--muted); }
+  .edu-date   { font-size: .68rem; color: var(--aws); margin-top: .2rem; font-weight: 500; }
+
+  /* ── EXPERIENCE ─────────────────────────── */
+  .exp-item {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 1.9rem;
+    transition: transform .2s;
+  }
+  .exp-item:hover { transform: translateX(3px); }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 6px;
+    bottom: -1.9rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--aws), var(--teal));
+    border-radius: 2px;
+    opacity: 0.4;
+  }
+  .exp-item:last-child::before { display: none; }
+  .exp-item::after {
+    content: '';
+    position: absolute;
+    left: -4px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--aws);
+    box-shadow: 0 0 10px rgba(255,153,0,.5);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .exp-item:hover::after {
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(255,153,0,.7);
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .3rem;
+    margin-bottom: .2rem;
+  }
+  .exp-role {
+    font-family: var(--font-head);
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .exp-date {
+    font-size: .7rem;
+    color: var(--aws);
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(255,153,0,.1);
+    padding: .15rem .5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,153,0,.2);
+  }
+  .exp-company {
+    font-size: .78rem;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: .45rem;
+  }
+  .exp-desc {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .exp-location {
+    font-size: .68rem;
+    color: var(--muted);
+    opacity: .7;
+    margin-top: .3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    background: rgba(255,255,255,.03);
+    padding: .2rem .5rem;
+    border-radius: 6px;
+  }
+
+  /* ── ABOUT / SUMMARY ────────────────────── */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(255,153,0,.06), rgba(0,212,200,.04));
+    border: 1px solid rgba(255,153,0,.18);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .summary-box:hover {
+    border-color: rgba(255,153,0,.35);
+    box-shadow: 0 8px 30px rgba(255,153,0,.08);
+  }
+  .summary-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--aws), var(--teal));
+    border-radius: 3px;
+  }
+  .summary-box p {
+    font-size: .82rem;
+    line-height: 1.75;
+    color: var(--body);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TECH STACK ICONS ───────────────────── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: .6rem;
+  }
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    padding: .7rem .4rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: .62rem;
+    color: var(--muted);
+    text-align: center;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    cursor: default;
+  }
+  .tech-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,153,0,.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  }
+  .tech-item .tech-icon {
+    font-size: 1.3rem;
+  }
+
+  /* ── FOOTER ─────────────────────────────── */
+  .footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 1.2rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .68rem;
+    color: var(--muted);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+  }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--aws); }
+
+  /* ── STATUS INDICATOR ───────────────────── */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .7rem;
+    color: #4ade80;
+    margin-top: .8rem;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: statusBlink 2s ease-in-out infinite;
+  }
+  @keyframes statusBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 700px) {
+    .header { grid-template-columns: 1fr; padding: 2rem; text-align: center; }
+    .profile-photo { margin: 0 auto; width: 110px; height: 110px; }
+    .name-block { text-align: center; }
+    .tag-line { justify-content: center; }
+    .subtitle { margin: 0 auto; }
+    .contact-box { align-items: center; }
+    .badges { padding: 1rem 2rem; justify-content: center; }
+    .body-grid { grid-template-columns: 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+    .main { padding: 2rem; }
+    .footer { flex-direction: column; gap: .8rem; text-align: center; padding: 1.2rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background floating shapes -->
+<div class="floating-shapes">
+  <div class="shape"></div>
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+
+<div class="cv-wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="profile-photo">
+      <img src="imgs/1768763601837.jpg" alt="Juan Sebastian Tinjaca Mesa" />
+    </div>
+    <div class="name-block">
+      <div class="tag-line">Ingeniería · Cloud · Frontend</div>
+      <h1>Juan Sebastian<br/><span>Tinjaca Mesa</span></h1>
+      <p class="subtitle">Presales Engineer &amp; Solution Architect con 7 certificaciones AWS. Combino expertise técnico en cloud, frontend y pre-venta para entregar soluciones de alto impacto en entornos enterprise.</p>
+      <div class="status">
+        <span class="status-dot"></span>
+        Disponible para nuevos retos
+      </div>
+    </div>
+    <div class="contact-box">
+      <a class="contact-item" href="tel:+573123594451">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
+        +57 312 359 4451
+      </a>
+      <a class="contact-item" href="mailto:juansebas1307@gmail.com">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+        juansebas1307@gmail.com
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/juan-sebastian-tinjaca-mesa-8157491a8/" target="_blank">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
+        LinkedIn Profile
+      </a>
+      <span class="contact-item">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+        Bogotá, Colombia
+      </span>
+    </div>
+  </header>
+
+  <!-- BADGES -->
+  <div class="badges">
+    <span class="badge badge-aws">AWS Community Builder</span>
+    <span class="badge badge-aws">AI Engineering</span>
+    <span class="badge badge-teal">Solution Architect</span>
+    <span class="badge badge-blue">Frontend Developer</span>
+    <span class="badge badge-aws">Student Builder Group Leader</span>
+    <span class="badge badge-purple">Cloud Club Captain</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-grid">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- SKILLS -->
+      <section>
+        <div class="sec-title">Aptitudes</div>
+
+        <div class="skill-group">
+          <div class="skill-label">Amazon Web Services (AWS) <span class="percent">96%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Solution Architecture <span class="percent">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Frontend Development <span class="percent">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Pre-Sales Engineering <span class="percent">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Financial Analysis <span class="percent">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Accounting <span class="percent">70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+      </section>
+
+      <!-- TECH STACK -->
+      <section>
+        <div class="sec-title">Tech Stack</div>
+        <div class="tech-grid">
+          <div class="tech-item"><span class="tech-icon">☁️</span>AWS</div>
+          <div class="tech-item"><span class="tech-icon">⚛️</span>React</div>
+          <div class="tech-item"><span class="tech-icon">🟦</span>TypeScript</div>
+          <div class="tech-item"><span class="tech-icon">🐍</span>Python</div>
+          <div class="tech-item"><span class="tech-icon">🔷</span>Next.js</div>
+          <div class="tech-item"><span class="tech-icon">🐳</span>Docker</div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section>
+        <div class="sec-title">Certificaciones AWS</div>
+
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Advanced Networking – Specialty</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified DevOps Engineer – Professional</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Generative AI Developer – Professional</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Solutions Architect – Professional</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Security – Specialty</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Developer – Associate</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div class="cert-text">AWS Certified Cloud Practitioner</div>
+        </div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section>
+        <div class="sec-title">Idiomas</div>
+        <div class="lang-item">
+          <span class="lang-name">Español</span>
+          <span class="lang-level">Nativo</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Inglés</span>
+          <span class="lang-level">Avanzado</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Portugués</span>
+          <span class="lang-level">Avanzado</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Coreano</span>
+          <span class="lang-level">Básico</span>
+        </div>
+      </section>
+
+      <!-- SOFT SKILLS -->
+      <section>
+        <div class="sec-title">Habilidades Blandas</div>
+        <div class="soft-skills-grid">
+          <div class="soft-skill-item">🎯 Liderazgo</div>
+          <div class="soft-skill-item">🤝 Trabajo en equipo</div>
+          <div class="soft-skill-item">🗣️ Comunicación efectiva</div>
+          <div class="soft-skill-item">💡 Pensamiento estratégico</div>
+          <div class="soft-skill-item">🔄 Adaptabilidad</div>
+          <div class="soft-skill-item">📋 Gestión de proyectos</div>
+          <div class="soft-skill-item">🧠 Resolución de problemas</div>
+          <div class="soft-skill-item">👥 Mentoría</div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <div class="sec-title">Educación</div>
+
+        <div class="edu-item">
+          <div class="edu-school">Universidad Nacional de Colombia</div>
+          <div class="edu-degree">Ingeniería de Sistemas y Computación</div>
+          <div class="edu-date">Sep 2021 – Ene 2028</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-school">SENA</div>
+          <div class="edu-degree">Técnico en Diseño Gráfico</div>
+          <div class="edu-date">Jul 2018 – Nov 2019</div>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- SUMMARY -->
+      <section class="reveal">
+        <div class="sec-title">Perfil Profesional</div>
+        <div class="summary-box">
+          <p>Ingeniero de Sistemas con sólida experiencia en cloud computing, arquitectura de soluciones y desarrollo frontend. Cuento con 7 certificaciones AWS y liderazgo activo en comunidades técnicas como AWS Community Builder y Cloud Club Captain. Me especializo en traducir requerimientos técnicos complejos en propuestas de valor claras para clientes enterprise, articulando equipos de desarrollo y pre-venta de manera efectiva.</p>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="reveal">
+        <div class="sec-title">Experiencia</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Presales Engineer</span>
+            <span class="exp-date">Abr 2025 – Presente</span>
+          </div>
+          <div class="exp-company">Blend</div>
+          <div class="exp-desc">Liderazgo de procesos de pre-venta técnica para soluciones enterprise, diseño de arquitecturas cloud en AWS, y acompañamiento al equipo comercial en demostraciones y propuestas técnicas para clientes en LATAM.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Ingeniero de Preventa</span>
+            <span class="exp-date">Feb 2025 – Abr 2025</span>
+          </div>
+          <div class="exp-company">Blend LATAM</div>
+          <div class="exp-desc">Soporte técnico al proceso comercial, elaboración de propuestas de soluciones cloud, análisis de requerimientos de clientes y definición de arquitecturas adecuadas a sus necesidades.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Frontend Developer &amp; Project Lead</span>
+            <span class="exp-date">Nov 2023 – Feb 2025</span>
+          </div>
+          <div class="exp-company">Blend LATAM</div>
+          <div class="exp-desc">Desarrollo de interfaces modernas y escalables, liderazgo de proyectos frontend, definición de estándares de código y colaboración con equipos multidisciplinarios para entregar productos de calidad.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Community Manager</span>
+            <span class="exp-date">Mar 2022 – Oct 2024</span>
+          </div>
+          <div class="exp-company">Universidad Nacional de Colombia</div>
+          <div class="exp-desc">Gestión del canal de YouTube institucional, administración de redes sociales y Postmaster. Creación y publicación de contenido digital para la comunidad universitaria.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+      </section>
+
+      <!-- VOLUNTEERING / COMMUNITY -->
+      <section class="reveal">
+        <div class="sec-title">Voluntariado &amp; Comunidades</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">AWS Community Builder</span>
+            <span class="exp-date">2024 – Presente</span>
+          </div>
+          <div class="exp-company">Amazon Web Services – AI Engineering</div>
+          <div class="exp-desc">Miembro activo del programa global de AWS Community Builders en la categoría de AI Engineering. Creación de contenido técnico, participación en eventos y difusión de mejores prácticas en inteligencia artificial y servicios cloud.</div>
+          <div class="exp-location">📍 Global (remoto)</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">AWS Student Builder Group Leader</span>
+            <span class="exp-date">2023 – Presente</span>
+          </div>
+          <div class="exp-company">Amazon Web Services</div>
+          <div class="exp-desc">Liderazgo de grupo estudiantil enfocado en cloud computing y AWS. Organización de sesiones de estudio, talleres prácticos y acompañamiento a estudiantes en su camino hacia certificaciones AWS.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">AWS Cloud Club Captain</span>
+            <span class="exp-date">2023 – Presente</span>
+          </div>
+          <div class="exp-company">Amazon Web Services – Gold Level</div>
+          <div class="exp-desc">Capitán de Cloud Club a nivel Gold. Organización de meetups, workshops y hackatones para la comunidad universitaria. Fomento del aprendizaje colaborativo en tecnologías cloud y preparación para certificaciones.</div>
+          <div class="exp-location">📍 Bogotá, Colombia</div>
+        </div>
+
+      </section>
+
+    </main>
+  </div><!-- /body-grid -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>© 2025 Juan Sebastian Tinjaca Mesa</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/juan-sebastian-tinjaca-mesa-8157491a8/" target="_blank">LinkedIn</a>
+      <a href="mailto:juansebas1307@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</div><!-- /cv-wrap -->
+
+<!-- Scroll Reveal Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>
